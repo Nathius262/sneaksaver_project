@@ -37,7 +37,8 @@ INSTALLED_APPS = [
 
 
     'authentication',
-    'user'
+    'user',
+    'sneaksaver',
 
     #django alllauth
     'allauth',
