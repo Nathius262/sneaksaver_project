@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     #'cloudinary',
 
 
-    #'authentication',
+    'authentication',
 
     #django alllauth
     'allauth',
@@ -111,7 +111,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-#AUTH_USER_MODEL = 'authentication.CustomUser'
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -128,7 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SITE_ID = 1
 
 #ACCOUNT_USER_MODEL_USERNAME_FIELD = None
-ACCOUNT_LOGOUT_REDIRECT_URL = "/auth/login/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/account/login/"
 ACCOUNT_USERNAME_REQUIRED =True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_LOGOUT_ON_GET = True
