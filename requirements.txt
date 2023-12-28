@@ -1,0 +1,10 @@
+Django
+django-jazzmin
+django-allauth
+Pillow
+python-decouple
+django-cors-headers
+django-js-asset
+djangorestframework
+djangorestframework-simplejwt
+mysqlclient
