@@ -9,3 +9,13 @@ class Profile(models.Model):
     
     def __str__(self):
         return str(self.user)
+    
+    
+class Reward(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=False)
+    point = models.DecimalField(max_digits=5, decimal_places=2)
+    comment = models.CharField(max_length=50, null=True, blank=False)
+    
+    def __str__(self):
+        return str(self.user)
+    
