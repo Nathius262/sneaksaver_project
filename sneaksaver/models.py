@@ -4,6 +4,7 @@ from user.models import Profile
 # Create your models here.
 class CleanService(models.Model):
     service_name = models.CharField(max_length=50, null=True, blank=False)
+    service_price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=False)
     
     def __str__(self):
         return self.service_name
