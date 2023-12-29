@@ -10,3 +10,4 @@ class RewardAdmin(admin.ModelAdmin):
     list_display = ['user', 'point']
     
 admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Reward, RewardAdmin)
