@@ -131,12 +131,13 @@ SITE_ID = 1
 
 #ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_LOGOUT_REDIRECT_URL = "/account/login/"
+LOGIN_REDIRECT_URL = "/"
 ACCOUNT_USERNAME_REQUIRED =True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_UNIQUE_EMAIL = True
 
-#ACCOUNT_FORMS = {'signup': 'backend.user.forms.RegistrationForm'}
+ACCOUNT_FORMS = {'signup': 'authentication.forms.RegistrationForm'}
 #ACCOUNT_USERNAME_MIN_LENGTH = 10
 
 ACCOUNT_EMAIL_REQUIRED = True
@@ -215,12 +216,14 @@ CORS_ALLOW_HEADERS = [
 
 
 STATIC_URL = "/static/"
+MEDIA_URL = "/media/"
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     #os.path.join(BASE_DIR, MEDIA_URL)
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_cdn/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media_cdn/')
 
 
 if DEBUG:
