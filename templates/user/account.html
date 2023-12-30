@@ -1,0 +1,146 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "account" %}{% endblock %}
+
+{% block content %}
+
+<div class="login-box">
+  <!--<div class="login-logo">
+      <h1>
+          <picture>
+              <source srcset="{% static 'img/logo.png'%}" media="(prefers-color-scheme: dark)">
+               <img src="{% static 'img/logo.png'%}" alt="Fantasy Team Game">
+          </picture>
+      </h1>
+  </div>-->
+
+  <div class="card">
+    
+    <div class="mb-3 text-center">
+      <div class="mt-4">
+        <h3 class="fw-bold fs-h2 navy-blue">Account settings</h3>
+      </div>
+    </div>
+    <div class="card-body">
+          
+  <form method="post" enctype="multipart/form-data"  novalidate="" class="needs-validation" id="form-signup">{% csrf_token %}
+
+    <div class="container col-12 mt-3 mb-4 d-flex justify-content-center">
+      <div class="main_img container" id="id_image_group">
+        <img src="{{form.initial.image}}" alt="profile Image" class="profile_img" id="id_image_display">
+        <div class="main_overlay main_overlay_blur">
+          <div class="text-center"><i class="fa fa-edit"></i> Change</div>
+        </div>
+
+        <input type="file" name="image" id="id_image_file" onchange="readURL(this)" accept="image/*" class="form-control" value="{{form.initial.image}}" hidden="">
+      </div>
+    </div>
+
+    <p class="form-text error-text text-danger">
+      {{ form.non_field_errors.as_text }}
+    </p>
+    
+    <div class="input-group mb-3">
+      <input name="first_name" type="text" class="form-control" placeholder="First Name" required="" value="{{form.initial.first_name}}">
+      <div class="input-group-append">
+          <div class="input-group-text">
+              <span class="fas fa-user"></span>
+          </div>
+      </div>
+      <p class="form-text error-text text-danger invalid-feedback d-block">
+        {{ form.first_name.errors.as_text }}
+      </p> 
+      <div class="invalid-feedback">
+        First name is required
+      </div>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <input name="last_name" type="text" class="form-control" placeholder="Last Name" required="" value="{{form.initial.last_name}}">
+      <div class="input-group-append">
+          <div class="input-group-text">
+              <span class="fas fa-user"></span>
+          </div>
+      </div>
+      <p class="form-text error-text text-danger invalid-feedback d-block">
+        {{ form.last_name.errors.as_text }}
+      </p> 
+      <div class="invalid-feedback">
+        Last name is required
+      </div>
+
+    </div>
+      
+      <div class="input-group mb-3">
+          <input name="email" type="email" class="form-control" placeholder="Email" required="" value="{{form.initial.email}}">
+          <div class="input-group-append">
+              <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+              </div>
+          </div>
+          <p class="form-text error-text text-danger invalid-feedback d-block">
+            {{ form.email.errors.as_text }}
+          </p> 
+          <div class="invalid-feedback">
+            Valid Email Address is required
+          </div>
+
+      </div>
+
+      <div class="input-group mb-3">
+        <input name="username" type="text" class="form-control" placeholder="Username" required="" value="{{form.initial.username}}">
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user-tie"></span>
+            </div>
+        </div>
+        <p class="form-text error-text text-danger invalid-feedback d-block">
+          {{ form.username.errors.as_text }}
+        </p> 
+        <div class="invalid-feedback">
+          Valid Username is required
+        </div>
+
+    </div>
+
+    <div class="mb-2 d-flex justify-content-between mt-3">
+      <small class="text-muted mb-3">changed password <a class=" fw-bold" href="{% url 'account_change_password' %}">Change Password</a></small>
+    </div>
+      
+      <div class="row">
+          <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block">
+                  Update
+              </button>
+          </div>
+      </div>
+  </form>
+
+      </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('id_image_group').onclick = function(event){
+    document.getElementById('id_image_file').click();
+  };
+  
+  function readURL(input){
+    console.log("read")
+    let reader = new FileReader();
+    reader.onload = function(e){
+      $('#id_image_display')
+        .attr('src', e.target.result)
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+
+</script>
+
+<script src="{% static 'js/form-validation.js' %}"></script>
+{% endblock %}
