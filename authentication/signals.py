@@ -7,4 +7,4 @@ from .models import CustomUser
 @receiver(post_save, sender=CustomUser)
 def createUserProfile(sender, instance, created, *args, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
+        Profile.objects.get_or_create(user=instance)        
