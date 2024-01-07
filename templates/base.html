@@ -1,0 +1,121 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="The platform will use machine learning which allows users to upload an image of the sneaker they would like to get clean service for by using the Sneaker recognition tool.">
+		<meta name="keywords" content="sneaksaver, sneakers,">
+		<meta name="author" content="sneaksaver">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		{% load static %}
+		<!--bootstrap
+				        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+				        <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
+
+		<link
+		rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+		<!--fontawesome
+				        <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome.css' %}">
+				        <link rel="stylesheet" href="{% static 'fontawesome/css/brands.css' %}">
+				        <link rel="stylesheet" href="{% static 'fontawesome/css/solid.css' %}">-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" integrity="sha512-siarrzI1u3pCqFG2LEzi87McrBmq6Tp7juVsdmGY1Dr8Saw+ZBAzDzrGwX3vgxX1NkioYNCFOVC0GpDPss10zQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" integrity="sha512-W/zrbCncQnky/EzL+/AYwTtosvrM+YG/V6piQLSe2HuKS6cmbw89kjYkp3tWFn1dkWV7L1ruvJyKbLz73Vlgfg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" integrity="sha512-P9pgMgcSNlLb4Z2WAB2sH5KBKGnBfyJnq+bhcfLCFusrRc4XdXrhfDluBl/usq75NF5gTDIMcwI1GaG5gju+Mw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
+
+		<link type="text/css" href="{% static 'css/landing_page.css' %}" rel="stylesheet" media="all">
+
+
+		<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+		<link rel="icon" href="{% static 'images/favio_icon.png' %}" type="image/png" sizes="16x16"/>
+		<title>
+			{% block title %}{% endblock %}
+			 | sneaksaver
+		</title>
+		<style>
+			/*----------------------------
+      preloader area
+      ----------------------------*/
+
+			.loader_bg {
+				position: fixed;
+				z-index: 9999999;
+				background: #fff;
+				width: 100%;
+				height: 100%;
+			}
+
+			.loader {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.loader img {
+				width: 280px;
+			}
+			.hidden-item {
+				visibility: hidden;
+				opacity: 0;
+				transition: visibility 0s 1s, opacity 1s linear;
+			}
+		</style>
+	</head>
+	<body>
+
+		<script>
+			let imgLogoSrc = "{% static 'images/logo2.png' %}"
+			let imgLogoSrc2 = "{% static 'images/logo3.png' %}"
+		</script>
+
+        <div class="loader_bg" id="loader">
+            <div class="loader">
+              <img src="{% static 'images/loading.gif' %}" alt="loading" />
+            </div>
+        </div>
+
+		<div id="root">
+			{% if loc %}
+				{% include 'snippets/landing_page_header.html' %}
+			{% else %}
+				{% include 'snippets/main_header.html' %}
+			{% endif %}
+
+			{% include 'snippets/message.html' %}
+			{% block content %}{% endblock %}
+
+
+			<div id="copy-alert" class="shadow">
+				<span class="p-3 rounded-2 bg-light">Copied!</span>
+			</div>
+
+			{% include 'snippets/footer.html' %}
+
+			{% include 'snippets/header_modal.html' %}
+		</div>
+
+        <script>
+            window.addEventListener('load', ()=>{
+              setInterval(()=>{
+                document.querySelector("#loader").classList.add('hidden-item')
+              }, 3000)
+            })
+        </script>
+		
+		<script src="{% static 'js/app.js' %}"></script>
+
+		<!--bootstrap
+				        <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+				        <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>-->
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+		<!--bootstrap end-->
+
+	</body>
+</html>

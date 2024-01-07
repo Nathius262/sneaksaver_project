@@ -1,0 +1,131 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Book" %}{% endblock %}
+
+{% block content %}
+
+<div class="login-box">
+  <!--<div class="login-logo">
+      <h1>
+          <picture>
+              <source srcset="{% static 'img/logo.png'%}" media="(prefers-color-scheme: dark)">
+               <img src="{% static 'img/logo.png'%}" alt="Fantasy Team Game">
+          </picture>
+      </h1>
+  </div>-->
+
+  <div class="">
+    
+    <div class="mb-3 text-center">
+      <div class="mt-4">
+        <h3 class="fw-bold fs-h2 ">Booking</h3>
+      </div>
+    </div>
+    <div class="">
+          
+  <p class="login-box-msg">Fill the form below to book a clean for your sneakers</p>
+  <form method="post" enctype="multipart/form-data"  novalidate="" class="needs-validation" id="form-signin"> {% csrf_token %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+
+    <p class="form-text error-text text-danger">
+      {{ form.non_field_errors.as_text }}
+    </p>        
+      
+    <div class="input-group mb-3">
+        <input type="text" name="name" class="form-control" placeholder="Full Name" required="" {% if request.user.is_authenticated %}value="{{request.user.user_profile.first_name}} {{request.user.user_profile.last_name}}"{% endif %}>
+        <div class="input-group-append">
+            <div class="input-group-text">
+                <span class="fas fa-user-tie"></span>
+            </div>
+        </div>
+        <div class="invalid-feedback d-block form-text error-text text-danger">
+          {{ form.name.errors.as_text }}
+        </div>
+        <div class="invalid-feedback">
+          Valid full name is required
+        </div>
+
+    </div>
+
+    <div class="input-group mb-3">
+          <input type="email" name="email" class="form-control" placeholder="Email" required="" {% if request.user.is_authenticated %} value="{{request.user.email}}"{% endif %}>
+          <div class="input-group-append">
+              <div class="input-group-text">
+                  <span class="fas fa-user"></span>
+              </div>
+          </div>
+          <div class="invalid-feedback d-block form-text error-text text-danger">
+            {{ form.email.errors.as_text }}
+          </div>
+          <div class="invalid-feedback">
+            Valid Email Address is required
+          </div>
+
+    </div>
+
+    <div class="input-group mb-3">
+      <textarea name="descrition" id="" cols="30" rows="10" class="form-control" placeholder="Clean Description..." required=""></textarea>
+
+      <div class="invalid-feedback d-block form-text error-text text-danger">
+        {{ form.descrition.errors.as_text }}
+      </div>
+      <div class="invalid-feedback">
+        Clean Description
+      </div>
+
+  </div>
+
+    <div class="input-group mb-3">
+        <input type="date" name="date" class="form-control" placeholder="book a date" required="" >
+
+        <div class="invalid-feedback d-block form-text error-text text-danger">
+          {{ form.date.errors.as_text }}
+        </div>
+        <div class="invalid-feedback">
+          Enter date!
+        </div>
+
+    </div>
+
+    <div class="input-group mb-3">
+        <select class="form-control" name="package" id="">
+            <option value="standard">standard</option>
+            <option value="deep">deep</option>
+            <option value="premium">premium</option>
+        </select>
+
+        <div class="invalid-feedback d-block form-text error-text text-danger">
+          {{ form.package.errors.as_text }}
+        </div>
+        <div class="invalid-feedback">
+          select a package
+        </div>
+
+    </div>
+
+      
+      
+      <div class="row">
+          <div class="col-12">
+              <button type="submit" class="btn btn-primary btn-block">
+                  continue
+              </button>
+          </div>
+      </div>
+  </form>
+
+      </div>
+  </div>
+</div>
+
+<script src="{% static 'js/form-validation.js' %}"></script>
+<script>
+
+</script>
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
+
+{% block content %}
+	<style>
+		.bg_image{
+			height: 300px;
+			object-fit: contain;
+			overflow: hidden;
+		}
+		.col-md-6:hover{
+			transform: translateY(-20px);
+			transition: transform 1s ease-in-out;
+		}
+		.p-link:hover{
+			background-color: var(--grey);
+		}
+	</style>
+
+	<div class="container-fluid" style="overflow-x: hidden;">
+		<div class="row">
+			<main class="ms-sm-auto px-md-4">
+
+				<div class="section container">
+					<h2 class="fw-bold h1 mb-5">Sneakers</h2>
+
+					<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+						<div class="col-md-6 px-0">
+						  <h1 class="display-4 fst-italic">Title of Sneaker Product</h1>
+						  <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this product's contents.</p>
+						  <p class="lead mb-0"><a href="{% url "product" %}" class="text-white fw-bold">continue...</a></p>
+						</div>
+					  </div>
+
+					<div class="row align-items-md-stretch">
+						<div class="col-md-6 mb-3 scroll-x-down-el">
+							
+							<div class="h-100 p-5 bg-light border rounded-3">
+								<div class="container bg_image">
+									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
+								</div>
+								<h2>Sneakers Model Name</h2>
+								<p>a brief description a brief description a brief description a brief description...</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<p class="text-end fw-bold fs-5">$12.34</p>
+									<a href="{% url 'product_detail' %}" class="btn btn-outline-secondary border-none">View</a>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3 scroll-x-top-el">
+							
+							<div class="h-100 p-5 bg-light border rounded-3">
+								<div class="container bg_image">
+									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
+								</div>
+								<h2>Sneakers Model Name</h2>
+								<p>a brief description a brief description a brief description a brief description...</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<p class="text-end fw-bold fs-5">$12.34</p>
+									<button class="btn btn-outline-secondary border-none" type="button">View</button>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3 scroll-x-down-el">
+							
+							<div class="h-100 p-5 bg-light border rounded-3">
+								<div class="container bg_image">
+									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
+								</div>
+								<h2>Sneakers Model Name</h2>
+								<p>a brief description a brief description a brief description a brief description...</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<p class="text-end fw-bold fs-5">$12.34</p>
+									<button class="btn btn-outline-secondary border-none" type="button">View</button>
+								</div>
+								
+							</div>
+						</div>
+
+						<div class="col-md-6 mb-3 scroll-x-top-el">
+							
+							<div class="h-100 p-5 bg-light border rounded-3">
+								<div class="container bg_image">
+									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
+								</div>
+								<h2>Sneakers Model Name</h2>
+								<p>a brief description a brief description a brief description a brief description...</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<p class="text-end fw-bold fs-5">$12.34</p>
+									<button class="btn btn-outline-secondary border-none" type="button">View</button>
+								</div>
+								
+							</div>
+						</div>
+
+						<a href="{% url 'product' %}" class="blue-bg p-2 col-1 mt-3 mb-5 nav-link p-link" > More >></a>
+					</div>
+				</div>
+
+				<div class="section container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+					<div class="row featurette mt-5 align-items-center">
+
+						<div class="col-12 scroll-x-down-el">
+							<div class="fs-1 fw-bold text-center">Monetization Channels</div>                        
+							<p class="fs-3 text-center">Establish a wide range of monetization channels, including referrals and real-time tasks, to provide users with multiple avenues to generate income.</p>
+						</div>    
+						<div class="col-12 scroll-x-top-el">
+							<div class="fs-1 fw-bold text-center">Seamless User Experience</div>                        
+							<p class="fs-3 text-center">Create an intuitive, user-friendly platform that offers a seamless experience for both beginners and experienced marketers, allowing them to easily navigate and maximize their earning potential.</p>
+						</div>
+						<div class="col-12 scroll-x-top-el">
+							<div class="fs-1 fw-bold text-center">Trust and Security</div>                        
+							<p class="fs-3 text-center">Implement robust security measures to protect user data and ensure a safe environment for all participants, building trust and credibility within the affiliate marketing community.</p>
+						</div>
+						<div class="col-12 scroll-x-top-el">
+							<div class="fs-1 fw-bold text-center">Continuous Innovation</div>                        
+							<p class="fs-3 text-center">Stay ahead of industry trends and technologies, regularly introducing new features, tools, and resources to enhance the earning potential and success of our users.</p>
+						</div>                   
+					</div>
+				</div>
+
+				{% include 'snippets/carousel.html' %}
+
+				<div>
+					<div class="section navbar container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+						<div class="row featurette mt-5 align-items-center mb-3">
+							<div class="col-md-6 mb-3 scroll-x-down-el scroll-y-top-el">
+								<div class="fs-1 fw-bold text-start">
+									<strong>Objectives</strong>
+								</div>
+								<p class="fs-3 text-start">
+									Have been streaming songs on Sportify, audiomack and the likes without getting paid?? With PIPAY'S pay-per-stream you get paid for streaming your favourite songs across different music platforms!!<strong>AMAZING RIGHT????</strong>
+								</p>
+							</div>
+	
+							<div class="col mt-lg-0 mt-sm- fw-bold fs-55 order-lg-last">
+								<div
+									class="h-100 shadow">
+									<!-- style="background-image: url('{% static 'img/dashboard_desktop.png' %}'); background-size:cover; width:100%; height:100%;" -->
+									<div class="">
+										<img style="width: 100%;" src="{% static 'images/b2.jpg' %}" alt="Sneaksaver"/>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+
+				{% include 'snippets/affilate_ads.html' %}
+
+				<div class="section container-lg d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+					<div class="featurette mt-5">
+						<div class="h4 fw-bold text-center">CONNET WITH US</div>
+						<div class="d-flex justify-content-between">
+							<a target="blank" href="#" class="connet-bg rounded-3 bg-gradient">
+								<i class="fa-brands fa-facebook fa-2x align-self-center"></i>
+							</a>
+							<a target="blank" href="#" class="connet-bg rounded-3 bg-gradient">
+								<i class="fa-brands fa-instagram fa-2x align-self-center"></i>
+							</a>
+							<a target="blank" href="#" class="connet-bg rounded-3 bg-gradient">
+								<i class="fa-brands fa-twitter fa-2x align-self-center"></i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+	</div>
+{% endblock %}

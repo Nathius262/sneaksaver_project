@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('allauth.urls')),
     path('account/', include('user.urls')),
+    path('', include('sneaksaver.urls')),
 ]
 
 if settings.DEBUG:

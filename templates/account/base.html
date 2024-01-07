@@ -45,6 +45,8 @@
     
     <!-- custom css -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link type="text/css" href="{% static 'css/landing_page.css' %}" rel="stylesheet" media="all">
+
 
     <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
     <style>
@@ -59,25 +61,90 @@
         background: url('{% static "images/b2.jpg" %}');
         background-size: cover;
         opacity: 0.7;
+        height: 100vh;
       }
-      #root {
+      #root, footer {
         position: relative; 
         z-index: 2;
       }
+      /*----------------------------
+      preloader area
+      ----------------------------*/
+      .body-dark .navy-blue{
+        color: var(--black);
+      }
+
+      .loader_bg {
+          position: fixed;
+          z-index: 9999999;
+          background: #fff;
+          width: 100%;
+          height: 100%;
+      }
+
+      .loader {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .loader img {
+          width: 280px;
+      }
+      .hidden-item {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s 1s, opacity 1s linear;
+      }
+      footer{
+        background:white;
+      }
+      .section-top{
+        margin-top: 80px;
+      }
+      .section-bottom{
+        margin-bottom: 150px;
+      }
+
     </style>
 
   </head>
-  <body class="jazzmin-login-page container" >
-    <div class="col-4" style="position: absolute; top:5vh; left: 6vw; z-index: 1;">
-      <button id="prev-nav" class="d-flex align-items-center btn btn-outline-dark"> <i class="fa fa-arrow-left mx-2"> </i> back</button>
-    </div>
-    <div id="root">
-    {% block body %}
-    {% block content %}
-    {% endblock %}
-    </div>
+  <body class="" style="height:100vh">
+    <!-- loader  -->
+    <div class="loader_bg" id="loader">
+      <div class="loader">
+        <img src="{% static 'images/loading.gif' %}" alt="loading" />
+      </div>
+   </div>
+   <!-- end loader -->
+   {% include 'snippets/main_header.html' %}
+
+   <div id="root" class="d-flex justify-content-center align-items-center section-top section-bottom">
+
+   {% block body %}
+   {% block content %}
+   {% endblock %}
+   </div>
+  {% include "snippets/footer.html" %}
+  {% include 'snippets/header_modal.html' %}
+
     <!-- jQuery -->
     <!-- Bootstrap 4 -->
+
+    <script>
+      window.addEventListener('load', ()=>{
+        setInterval(()=>{
+          document.querySelector("#loader").classList.add('hidden-item')
+        }, 3000)
+      })
+    </script>
+		<script src="{% static 'js/app.js' %}"></script>
+
     <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
     <!-- AdminLTE App -->
     <script src="{% static 'vendor/adminlte/js/adminlte.min.js' %}"></script>

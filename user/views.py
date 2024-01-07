@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Profile
 from authentication.models import CustomUser
 from .forms import AccountSettingsForm
@@ -7,6 +7,9 @@ from django.contrib import messages
 
 # Create your views here.
 def account_setting_view(request):
+    
+    if not request.user.is_authenticated:
+        return redirect("account_login")
     
     if request.POST:
         
