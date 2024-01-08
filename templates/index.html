@@ -17,6 +17,7 @@
 		.p-link:hover{
 			background-color: var(--grey);
 		}
+
 	</style>
 
 	<div class="container-fluid" style="overflow-x: hidden;">
@@ -24,17 +25,20 @@
 			<main class="ms-sm-auto px-md-4">
 
 				<div class="section container">
-					<h2 class="fw-bold h1 mb-5">Sneakers</h2>
-
-					<div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+					<div class="p-4 p-md-5 mb-4 mb-4 text-white rounded bg-dark" id="sneak-bg">
 						<div class="col-md-6 px-0">
-						  <h1 class="display-4 fst-italic">Title of Sneaker Product</h1>
-						  <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this product's contents.</p>
-						  <p class="lead mb-0"><a href="{% url "product" %}" class="text-white fw-bold">continue...</a></p>
+						  <h1 class="display-4 fst-italic">Premium Cleaning Service.</h1>
+						  <p class="lead my-3">
+							At Sneaksavers, we understand that every pair of sneakers deserves the best
+							 care possible. That's why we offer three levels of professional cleaning services 
+							 - Deep, Standard, and Premium - to cater to the varying needs of our customers.
+						  </p>
+						  <p class="lead mb-0"><a href="{% url "pricing" %}" class="text-white fw-bold">continue...</a></p>
 						</div>
-					  </div>
+					</div>
 
 					<div class="row align-items-md-stretch">
+					<h2 class="fw-bold h1 mb-5">Sneakers</h2>
 						<div class="col-md-6 mb-3 scroll-x-down-el">
 							
 							<div class="h-100 p-5 bg-light border rounded-3">
@@ -103,24 +107,28 @@
 					</div>
 				</div>
 
-				<div class="section container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-					<div class="row featurette mt-5 align-items-center">
+				<div class="section container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+					<div class="row featurette align-items-center">
+
+						   
+						<div class="col-12 scroll-x-down-el">
+							<div class="fs-1 fw-bold text-center">Seamless User Experience</div>                        
+							<p class="fs-3 text-center">Create an intuitive, user-friendly platform that offers a seamless experience for both beginners and experienced users, allowing them to easily navigate and maximize their resources.</p>
+						</div>
+
+						<div class="col-12 scroll-x-top-el">
+							<div class="fs-1 fw-bold text-center">Standard Cleaning Service</div>                        
+							<p class="fs-3 text-center">The Standard Cleaning Service is suited for sneakers that are in need of a regular refresh. This level of service is ideal for general maintenance to keep sneakers looking clean and presentable.</p>
+						</div>
 
 						<div class="col-12 scroll-x-down-el">
-							<div class="fs-1 fw-bold text-center">Monetization Channels</div>                        
-							<p class="fs-3 text-center">Establish a wide range of monetization channels, including referrals and real-time tasks, to provide users with multiple avenues to generate income.</p>
-						</div>    
+							<div class="fs-1 fw-bold text-center">Deep Cleaning Service</div>                        
+							<p class="fs-3 text-center">Our Deep Cleaning Service is designed for sneakers that require intensive restoration. This level of service is ideal for shoes with stubborn stains, deeply ingrained dirt, or strong odors.</p>
+						</div> 
+
 						<div class="col-12 scroll-x-top-el">
-							<div class="fs-1 fw-bold text-center">Seamless User Experience</div>                        
-							<p class="fs-3 text-center">Create an intuitive, user-friendly platform that offers a seamless experience for both beginners and experienced marketers, allowing them to easily navigate and maximize their earning potential.</p>
-						</div>
-						<div class="col-12 scroll-x-top-el">
-							<div class="fs-1 fw-bold text-center">Trust and Security</div>                        
-							<p class="fs-3 text-center">Implement robust security measures to protect user data and ensure a safe environment for all participants, building trust and credibility within the affiliate marketing community.</p>
-						</div>
-						<div class="col-12 scroll-x-top-el">
-							<div class="fs-1 fw-bold text-center">Continuous Innovation</div>                        
-							<p class="fs-3 text-center">Stay ahead of industry trends and technologies, regularly introducing new features, tools, and resources to enhance the earning potential and success of our users.</p>
+							<div class="fs-1 fw-bold text-center">Premium Cleaning Service</div>                        
+							<p class="fs-3 text-center">Our Premium Cleaning Service is the pinnacle of sneaker care. This level of service includes a combination of deep cleaning and premium conditioning to ensure that sneakers receive the utmost care and attention. Our team will meticulously clean the shoes with specialized techniques, paying close attention to detail to ensure that every aspect of the sneakers is thoroughly cared for.</p>
 						</div>                   
 					</div>
 				</div>
@@ -128,14 +136,14 @@
 				{% include 'snippets/carousel.html' %}
 
 				<div>
-					<div class="section navbar container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+					<div class="section navbar container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3">
 						<div class="row featurette mt-5 align-items-center mb-3">
 							<div class="col-md-6 mb-3 scroll-x-down-el scroll-y-top-el">
 								<div class="fs-1 fw-bold text-start">
-									<strong>Objectives</strong>
+									<strong>We Give the best Service</strong>
 								</div>
 								<p class="fs-3 text-start">
-									Have been streaming songs on Sportify, audiomack and the likes without getting paid?? With PIPAY'S pay-per-stream you get paid for streaming your favourite songs across different music platforms!!<strong>AMAZING RIGHT????</strong>
+									No matter which level of service is chosen, Sneaksavers is committed to providing the highest quality care for sneakers. Our professional cleaning services are designed to meet the diverse needs of our customers, ensuring that every pair of sneakers receives the specialized treatment it deserves.
 								</p>
 							</div>
 	
@@ -155,7 +163,7 @@
 
 				{% include 'snippets/affilate_ads.html' %}
 
-				<div class="section container-lg d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+				<div class="section container-lg d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3">
 					<div class="featurette mt-5">
 						<div class="h4 fw-bold text-center">CONNET WITH US</div>
 						<div class="d-flex justify-content-between">

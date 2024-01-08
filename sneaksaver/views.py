@@ -15,3 +15,9 @@ def pricing_view(request):
 
 def booking_view(request):
     return render(request, "sneaksaver/booking.html")
+
+def about_page_view(request):
+    return render(request, "sneaksaver/about.html")
+
+def contact_view(request):
+    return render(request, "sneaksaver/contact.html")

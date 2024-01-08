@@ -35,6 +35,8 @@
     
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato">
+
     
 
   
@@ -50,9 +52,9 @@
 
     <script src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
     <style>
-      body:before { 
+      body::before { 
         content: "";
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
@@ -105,10 +107,10 @@
         background:white;
       }
       .section-top{
-        margin-top: 80px;
+        margin-top: 40px;
       }
       .section-bottom{
-        margin-bottom: 150px;
+        margin-bottom: 50px;
       }
 
     </style>

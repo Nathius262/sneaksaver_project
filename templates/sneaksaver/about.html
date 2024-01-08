@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+{% load static %}
+
+{% block content %}
+
+	<div class="container" style="overflow-x: hidden; margin-bottom: 80px;">
+		<div class="row">
+			<main class="container section">
+				<div class="about_section layout_padding">
+                    <div class="container">
+                       <div class="row">
+                          <div class="col-lg-8 col-sm-12">
+                             <div class="about_img"><img src="{% static 'images/about-img.png' %}"></div>
+                             <div class="like_icon"><img src="{% static 'images/like-icon.png' %}"></div>
+                             <p class="post_text">Post By : 09/06/2019</p>
+                             <h2 class="most_text">About Us</h2>
+                             <p class="lorem_text">
+                              At Sneaksavers, we understand the passion and investment that many individuals have in their sneakers. 
+                              Whether it's a limited edition release or a cherished pair of everyday shoes, we know that keeping them 
+                              clean and well-maintained is essential. That's why we offer professional cleaning services that are designed 
+                              to remove dirt, stains, and odors from sneakers, restoring them to their original pristine condition. 
+                              Our team of experts has years of experience in sneaker cleaning and are equipped with the latest techniques 
+                              and cleaning products to ensure that each pair is treated with the utmost care and attention to detail.
+                            </p>
+                             <div class="social_icon_main">
+                                <div class="social_icon">
+                                   <ul>
+                                      <li><a href="#"><img src="{% static 'images/fb-icon.png' %}"></a></li>
+                                      <li><a href="#"><img src="{% static 'images/twitter-icon.png' %}"></a></li>
+                                      <li><a href="#"><img src="{% static 'images/instagram-icon.png' %}"></a></li>
+                                   </ul>
+                                </div>
+                                <div class="read_bt"><a href="#">Read More</a></div>
+                             </div>
+                          </div>
+                          <div class="col-lg-4 col-sm-12">
+                             <div class="image_5"><img src="{% static 'images/img-5.png' %}"></div>
+                             <h1 class="about_taital">Company</h1>
+                             <p class="about_text">
+                                 Sneaksavers is committed to providing valuable resources and information to help 
+                                 users better understand how to care for their sneakers. Our blog features articles and guides on topics 
+                                 such as sneaker care tips, cleaning techniques, and maintenance advice. We also regularly feature interviews 
+                                 with industry experts and influencers, providing insights and recommendations on how to best preserve and protect 
+                                 sneakers.
+                              </p>
+                             <div class="read_bt_1"><a href="#">Read More</a></div>
+                          </div>
+                       </div>
+                    </div>
+                </div>
+			  
+			  </main>
+		</div>
+	</div>
+{% endblock %}
