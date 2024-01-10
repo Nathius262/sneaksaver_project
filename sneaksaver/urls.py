@@ -8,7 +8,7 @@ from .views import (
 urlpatterns = [
     path("", index_view, name="index"),
     path("product/", product_view, name="product"),
-    path("product/detail/", product_detail_view, name="product_detail"),
+    path("product/<str:slug>/detail/", product_detail_view, name="product_detail"),
     path("booking/", booking_view, name="booking"),
     path("pricing/", pricing_view, name="pricing"),
     path("about/", about_page_view, name="about"),

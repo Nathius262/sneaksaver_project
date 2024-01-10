@@ -38,7 +38,7 @@
     </p>        
       
     <div class="input-group mb-3">
-        <input type="text" name="name" class="form-control" placeholder="Full Name" required="" {% if request.user.is_authenticated %}value="{{request.user.user_profile.first_name}} {{request.user.user_profile.last_name}}"{% endif %}>
+        <input type="text" name="name" class="form-control" placeholder="Full Name" required="" {% if request.user.is_authenticated %} value="{{request.user.user_profile.first_name}} {{request.user.user_profile.last_name}}"{% endif %}>
         <div class="input-group-append">
             <div class="input-group-text">
                 <span class="fas fa-user-tie"></span>
@@ -70,10 +70,10 @@
     </div>
 
     <div class="input-group mb-3">
-      <textarea name="descrition" id="" cols="30" rows="10" class="form-control" placeholder="Clean Description..." required=""></textarea>
+      <textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="Clean Description..." required=""></textarea>
 
       <div class="invalid-feedback d-block form-text error-text text-danger">
-        {{ form.descrition.errors.as_text }}
+        {{ form.description.errors.as_text }}
       </div>
       <div class="invalid-feedback">
         Clean Description
@@ -95,9 +95,9 @@
 
     <div class="input-group mb-3">
         <select class="form-control" name="package" id="">
-            <option value="standard">standard</option>
-            <option value="deep">deep</option>
-            <option value="premium">premium</option>
+          {% for data in service %}
+            <option value="{{data.id}}">{{data.service_name}}</option>
+          {% endfor %}
         </select>
 
         <div class="invalid-feedback d-block form-text error-text text-danger">

@@ -125,9 +125,8 @@
    </div>
    <!-- end loader -->
    {% include 'snippets/main_header.html' %}
-
+		{% include 'snippets/message.html' %}
    <div id="root" class="d-flex justify-content-center align-items-center section-top section-bottom">
-
    {% block body %}
    {% block content %}
    {% endblock %}
@@ -142,7 +141,7 @@
       window.addEventListener('load', ()=>{
         setInterval(()=>{
           document.querySelector("#loader").classList.add('hidden-item')
-        }, 3000)
+        }, 1000)
       })
     </script>
 		<script src="{% static 'js/app.js' %}"></script>

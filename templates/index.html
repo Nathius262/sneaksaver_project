@@ -38,73 +38,30 @@
 					</div>
 
 					<div class="row align-items-md-stretch">
-					<h2 class="fw-bold h1 mb-5">Sneakers</h2>
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<a href="{% url 'product_detail' %}" class="btn btn-outline-secondary border-none">View</a>
-								</div>
-								
-							</div>
-						</div>
+						<h2 class="fw-bold h1 mb-5">Sneakers</h2>
 
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
+						{% for products in product %}
+							<div class="col-md-6 mb-3 {% cycle 'scroll-x-down-el' 'scroll-x-top-el' %}">
 								
+								<div class="h-100 p-5 bg-light border rounded-3">
+									<div class="container bg_image">
+										<img class="w-100" src="{{products.image_url}}" alt="">
+									</div>
+									<h2>{{products.name}}</h2>
+									<p>{{products.description}}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<p class="text-end fw-bold fs-5">${{products.price}}</p>
+										<a href='{{products.get_absolute_url}}' class="btn btn-outline-secondary border-none">View</a>
+									</div>
+									
+								</div>
 							</div>
-						</div>
+						{% endfor %}
 
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
 
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<a href="{% url 'product' %}" class="blue-bg p-2 col-1 mt-3 mb-5 nav-link p-link" > More >></a>
 					</div>
+					<a href="{% url 'product' %}" class="blue-bg p-2 col-1 mt-3 mb-5 nav-link p-link" > More >></a>
+
 				</div>
 
 				<div class="section container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
