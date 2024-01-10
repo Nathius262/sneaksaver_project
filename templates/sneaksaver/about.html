@@ -5,53 +5,102 @@
 
 {% block content %}
 
+<style>
+   .rectangle {
+      position: relative;
+      justify-self: center;
+      justify-content: center;
+      width: 150px;
+      height: 3px;
+      background-color: var(--black);
+      margin-top: 4px;
+      z-index: 1;
+    }
+    .body-dark .rectangle{
+      background-color: var(--white);
+    }
+    @media screen and (min-width = 1195px) {
+      .rectangle{
+         width: 200px;
+      }
+    }
+</style>
+
 	<div class="container" style="overflow-x: hidden; margin-bottom: 80px;">
-		<div class="row">
-			<main class="container section">
-				<div class="about_section layout_padding">
-                    <div class="container">
-                       <div class="row">
-                          <div class="col-lg-8 col-sm-12">
-                             <div class="about_img"><img src="{% static 'images/about-img.png' %}"></div>
-                             <div class="like_icon"><img src="{% static 'images/like-icon.png' %}"></div>
-                             <p class="post_text">Post By : 09/06/2019</p>
-                             <h2 class="most_text">About Us</h2>
-                             <p class="lorem_text">
-                              At Sneaksavers, we understand the passion and investment that many individuals have in their sneakers. 
-                              Whether it's a limited edition release or a cherished pair of everyday shoes, we know that keeping them 
-                              clean and well-maintained is essential. That's why we offer professional cleaning services that are designed 
-                              to remove dirt, stains, and odors from sneakers, restoring them to their original pristine condition. 
-                              Our team of experts has years of experience in sneaker cleaning and are equipped with the latest techniques 
-                              and cleaning products to ensure that each pair is treated with the utmost care and attention to detail.
-                            </p>
-                             <div class="social_icon_main">
-                                <div class="social_icon">
-                                   <ul>
-                                      <li><a href="#"><img src="{% static 'images/fb-icon.png' %}"></a></li>
-                                      <li><a href="#"><img src="{% static 'images/twitter-icon.png' %}"></a></li>
-                                      <li><a href="#"><img src="{% static 'images/instagram-icon.png' %}"></a></li>
-                                   </ul>
-                                </div>
-                                <div class="read_bt"><a href="#">Read More</a></div>
-                             </div>
-                          </div>
-                          <div class="col-lg-4 col-sm-12">
-                             <div class="image_5"><img src="{% static 'images/img-5.png' %}"></div>
-                             <h1 class="about_taital">Company</h1>
-                             <p class="about_text">
-                                 Sneaksavers is committed to providing valuable resources and information to help 
-                                 users better understand how to care for their sneakers. Our blog features articles and guides on topics 
-                                 such as sneaker care tips, cleaning techniques, and maintenance advice. We also regularly feature interviews 
-                                 with industry experts and influencers, providing insights and recommendations on how to best preserve and protect 
-                                 sneakers.
-                              </p>
-                             <div class="read_bt_1"><a href="#">Read More</a></div>
-                          </div>
-                       </div>
-                    </div>
-                </div>
-			  
-			  </main>
-		</div>
+		<div class="row d-flex justify-content-center py-md-3 align-items-center scroll-y-top-el">
+                                    
+         <div class="col-lg-12 mx-auto mt-3">                
+             <div class="p-0 justify-self-center">
+                 <h1 class="text-center text-md-center h1 fw-bolder d-grid"><span>ABOUT US</span> <div class="rectangle"></div></h1>
+                 <p class="fs-3 mt-5 text-center text-md-center">
+                  At Sneaksavers we're passionate about giving sneakers a second chance. We specialize in restoring and reviving sneakers from neglected or heavily worn conditions, breathing new life into them.
+                 </p>
+             </div>
+         </div>
+     </div>
+
+      <div>
+         <div class="section navbar container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3">
+            <div class="row featurette mt-5 align-items-center mb-3">
+               <div class="col-md-6 mb-3 scroll-x-down-el scroll-y-top-el">
+                  <div class="fs-1 fw-bold text-center text-md-start mb-3">
+                     <strong><i class="fa fa-users me-3"></i> Our Mission</strong>
+                  </div>
+                  <p class="fs-3 text-center text-md-start">
+                     Our mission is to transform beloved shoes into pristine, refreshed sneakers, extending their lifespan and reducing waste within the fashion industry. We take pride in bringing back the beauty of sneakers, making each pair tell its specific own story of renewal and sustainability.
+                  </p>
+               </div>
+
+               <div class="col mt-lg-0 mt-sm- fw-bold fs-55 order-lg-last">
+                  <div
+                     class="h-100 shadow">
+                     <!-- style="background-image: url('{% static 'img/dashboard_desktop.png' %}'); background-size:cover; width:100%; height:100%;" -->
+                     <div class="">
+                        <img style="width: 100%;" src="{% static 'images/b2.jpg' %}" alt="Sneaksaver"/>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="section container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+         <div class="row featurette align-items-center">
+
+            <div class="fs-1 h1 fw-bold text-center mb-3 d-grid">
+               <strong class="fs-1 h1 fw-bold">Our Services</strong>
+               <div class="rectangle"></div>
+            </div>
+
+            <div class="col-12 scroll-x-top-el">
+               <div class="fs-1 fw-bold text-center">Standard Cleaning Service</div>                        
+               <p class="fs-3 text-center">The Standard Cleaning Service is suited for sneakers that are in need of a regular refresh. This level of service is ideal for general maintenance to keep sneakers looking clean and presentable.</p>
+            </div>
+
+            <div class="col-12 scroll-x-down-el">
+               <div class="fs-1 fw-bold text-center">Deep Cleaning Service</div>                        
+               <p class="fs-3 text-center">Our Deep Cleaning Service is designed for sneakers that require intensive restoration. This level of service is ideal for shoes with stubborn stains, deeply ingrained dirt, or strong odors.</p>
+            </div> 
+
+            <div class="col-12 scroll-x-top-el">
+               <div class="fs-1 fw-bold text-center">Premium Cleaning Service</div>                        
+               <p class="fs-3 text-center">Our Premium Cleaning Service is the pinnacle of sneaker care. This level of service includes a combination of deep cleaning and premium conditioning to ensure that sneakers receive the utmost care and attention. Our team will meticulously clean the shoes with specialized techniques, paying close attention to detail to ensure that every aspect of the sneakers is thoroughly cared for.</p>
+            </div>                   
+         </div>
+      </div>
+      <hr class="mt-5">
+      <div class="section row mt-2 mb-2 align-items-center">
+         <div class="container col-sm-3 mt-3 mb-4 d-flex justify-content-center">
+            <div class="main_img container" id="id_image_group">
+              <img src="{% static 'images/img-5.png' %}" alt="profile Image" class="profile_img" id="id_image_display">      
+            </div>
+         </div>
+         <div class="col scroll-x-down-el scroll-y-top-el">
+            <p class="fs-3 text-center text-md-start">
+               Our mission is to transform beloved shoes into pristine, refreshed sneakers, extending their lifespan and reducing waste within the fashion industry...
+            </p>
+         </div>
+      </div>
+      <hr class="">
 	</div>
 {% endblock %}

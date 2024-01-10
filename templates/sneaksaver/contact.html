@@ -1,7 +1,10 @@
 {% extends 'account/base.html' %}
 
+{% load i18n %}
 {% load static %}
+{% load account socialaccount %}
 
+{% block head_title %}{% trans "Contact" %}{% endblock %}
 {% block content %}
 	<style>
 		body::before {
@@ -28,12 +31,12 @@
 
 			<div class="mb-3 text-center">
 				<div class="mt-4">
-					<h3 class="fw-bold fs-h2 ">Contact me</h3>
+					<h3 class="fw-bold fs-h2 ">Contact Us</h3>
 				</div>
 			</div>
 			<div class="">
 
-				<p class="login-box-msg">Fill the form below</p>
+				<p class="login-box-msg">Do you want to reach out to us, Fill in the form and contact us, we would love to hear from you.</p>
 				<form method="post" enctype="multipart/form-data" novalidate="" class="needs-validation" id="form-signin">
 					{% csrf_token %}
 					{% if redirect_field_value %}
