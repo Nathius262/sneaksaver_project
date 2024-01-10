@@ -1,5 +1,7 @@
 from django.db import models
 from user.models import Profile
+from .utils import upload_location
+from django.urls import reverse
 
 # Create your models here.
 class CleanService(models.Model):
@@ -29,10 +31,49 @@ class Review(models.Model):
         return str(self.user)
     
     
-    
 class Booking(models.Model):
-    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="user_booking")
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="user_booking", null=True, blank=True)
+    name = models.CharField(max_length=200, null=True, blank=False)
+    email = models.CharField(max_length=100, null=True, blank=False)
+    package = models.ForeignKey(CleanService, on_delete=models.CASCADE)
+    description = models.TextField()
     date = models.DateTimeField(auto_now_add=False)
     
+    
     def __str__(self):
-        return str(self.user)
+        return str(self.name)
+    
+        
+class Contact(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="user_contact", null=True, blank=True)
+    name = models.CharField(max_length=200, null=True, blank=False)
+    email = models.CharField(max_length=100, null=True, blank=False)
+    body = models.TextField()
+    date = models.DateTimeField(auto_now=True)
+    
+    
+    def __str__(self):
+        return str(self.name)
+    
+    
+class Product(models.Model):
+    name=models.CharField(max_length=50, null=True, blank=True)
+    description=models.CharField(max_length=50, null=True, blank=True)
+    price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=False)
+    image = models.ImageField(upload_to=upload_location, default="default_product.jpg", null=True, blank=True)
+    slug = models.SlugField(blank=True, unique=True)
+    
+    def __str__(self):
+        return str(self.name)
+    
+    @property
+    def image_url(self):
+        try:
+            pic = self.image.url
+        except :
+            pic = ''
+        return pic
+    
+    def get_absolute_url(self):
+        return reverse('product_detail', args=[self.slug])
+    

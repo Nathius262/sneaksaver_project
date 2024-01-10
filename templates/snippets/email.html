@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h1 class="fw-bold">Notification from Sneaksaver</h1>
+    <p class="fs-3">
+        Hi {{name}}! 
+        You have successfully booked a {{package}} clean service scheduled for {{date}}.
+    </p>
+</div>
+<hr>
+<div class="container">
+    <span>Team Sneaksaver</span>
+    <span>@2024</span>
+</div>
+{% endblock content %}

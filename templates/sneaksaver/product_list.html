@@ -23,314 +23,29 @@
 				<div class="section container">
 					<h2 class="fw-bold h1 mb-5">Sneakers</h2>
 					<div class="row align-items-md-stretch">
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<a href="{% url 'product_detail' %}" class="btn btn-outline-secondary border-none">View</a>
-								</div>
+						{% for products in all_product %}
+							<div class="col-md-6 mb-3 {% cycle 'scroll-x-down-el' 'scroll-x-top-el' %}">
 								
+								<div class="h-100 p-5 bg-light border rounded-3">
+									<div class="container bg_image">
+										<img class="w-100" src="{{products.image_url}}" alt="">
+									</div>
+									<h2>{{products.name}}</h2>
+									<p>{{products.description}}</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<p class="text-end fw-bold fs-5">${{products.price}}</p>
+										<a href='{{products.get_absolute_url}}' class="btn btn-outline-secondary border-none">View</a>
+									</div>
+									
+								</div>
 							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-top-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
-
-						<div class="col-md-6 mb-3 scroll-x-down-el">
-							
-							<div class="h-100 p-5 bg-light border rounded-3">
-								<div class="container bg_image">
-									<img class="w-100" src="{% static 'images/b2.jpg' %}" alt="">
-								</div>
-								<h2>Sneakers Model Name</h2>
-								<p>a brief description a brief description a brief description a brief description...</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<p class="text-end fw-bold fs-5">$12.34</p>
-									<button class="btn btn-outline-secondary border-none" type="button">View</button>
-								</div>
-								
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 
-					<div class="blog-pagination" aria-label="Pagination">
-						<a class="btn btn-outline-primary" href="#">Older</a>
-						<a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+					<div class="blog-pagination " aria-label="Pagination">
+						<a class="btn btn-outline-primary {% if not all_product.has_previous  %}disabled {% endif %}"{% if all_product.has_previous  %}href="?{% if query %}q={{query}}&{% endif %}page={{all_product.previous_page_number}}"{% else %} href="" tabindex="-1"{% endif %}>Older</a>
+
+						<a class="btn btn-outline-secondary {% if not all_product.has_next %}disabled {% endif %}" {% if all_product.has_next  %} href="?{% if query %}q={{query}}&{% endif %}page={{all_product.next_page_number}}"{% else %} href="" tabindex="-1"{% endif %} >Newer</a>
 					</div>
 					
 				</div>
@@ -345,7 +60,7 @@
 									<strong>Featured</strong>
 								</div>
 								<p class="fs-3 text-start">
-									Sneakers Sneaksaver...
+									No matter which level of service is chosen, Sneaksavers is committed to providing the highest quality care for sneakers. Our professional cleaning services are designed to meet the diverse needs of our customers, ensuring that every pair of sneakers receives the specialized treatment it deserves.
 								</p>
 							</div>
 	
