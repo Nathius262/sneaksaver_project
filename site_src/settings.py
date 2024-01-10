@@ -21,7 +21,7 @@ WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 # Application definition
 
 INSTALLED_APPS = [
-    
+
     'jazzmin',
     'django.contrib.sites',
     'django.contrib.admin',
@@ -235,8 +235,8 @@ if DEBUG:
             'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
         }
     }
-    
-    
+
+
 
 else:
 
@@ -252,7 +252,7 @@ else:
     }
 
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST = config('EMAIL_HOST')
     EMAIL_HOST_USER = config('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = 587
