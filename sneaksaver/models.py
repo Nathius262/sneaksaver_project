@@ -37,7 +37,7 @@ class Booking(models.Model):
     email = models.CharField(max_length=100, null=True, blank=False)
     package = models.ForeignKey(CleanService, on_delete=models.CASCADE)
     description = models.TextField()
-    date = models.DateTimeField(auto_now_add=False)
+    date = models.DateField(auto_now_add=False)
 
 
     def __str__(self):
@@ -49,7 +49,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=200, null=True, blank=False)
     email = models.CharField(max_length=100, null=True, blank=False)
     body = models.TextField()
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateField(auto_now=True)
 
 
     def __str__(self):
@@ -62,6 +62,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=False)
     image = models.ImageField(upload_to=upload_location, default="default_product.jpg", null=True, blank=True)
     slug = models.SlugField(blank=True, unique=True)
+    date = models.DateField(auto_now=True, auto_now_add=False)
 
     def __str__(self):
         return str(self.name)

@@ -41,6 +41,7 @@ def product_detail_view(request, slug):
     
     context = {
         'product':product,
+        'related':Product.objects.all().order_by('?')[:2]
     }
     return render(request, "sneaksaver/product_detail.html", context)
 
