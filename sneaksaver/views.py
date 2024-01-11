@@ -46,7 +46,12 @@ def product_detail_view(request, slug):
     return render(request, "sneaksaver/product_detail.html", context)
 
 def pricing_view(request):
-    return render(request, "sneaksaver/pricing.html")
+    context = {
+        "price_standard":CleanService.objects.get(service_name__icontains="standard"),
+        "price_deep":CleanService.objects.get(service_name__icontains="deep"),
+        "price_premium":CleanService.objects.get(service_name__icontains="premium"),
+    }
+    return render(request, "sneaksaver/pricing.html", context)
 
 def booking_view(request):
     context = {}
