@@ -17,6 +17,9 @@
     main{
       color:var(--black);
     }
+    .body-dark main .section{
+      color:var(--white)
+    }
 	</style>
 
     <header class="section">
@@ -25,7 +28,7 @@
             <p class="fs-5 text-muted">Select a Clean package and book on to clean sneakers.</p>
           </div>
     </header>
-	<main class="mb-5">
+	<main class="container-fluid mb-5" style="overflow-x: hidden;">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
           <div class="col scroll-y-top-el">
             <div class="card mb-4 rounded-3 shadow-sm">
@@ -82,14 +85,14 @@
     
         <h2 class="display-6 text-center mb-4">Compare plans</h2>
     
-        <div class="table-responsive">
+        <div class="table-responsive d-md-block d-none">
           <table class="table text-start bg-light">
             <thead>
               <tr>
-                <th style="width: 34%;"></th>
-                <th style="width: 22%;">Standard</th>
-                <th style="width: 22%;">Deep</th>
-                <th style="width: 22%;">Platinum</th>
+                <th style="width: 15%;"></th>
+                <th style="width: ;">Standard</th>
+                <th style="width: ;">Deep</th>
+                <th style="width: ;">Platinum</th>
               </tr>
             </thead>
             <tbody>
@@ -105,18 +108,14 @@
               <tr>
                 <th scope="row" class="text-start">Details</th>
                 <td>
-                  for sneakers that are in need of a regular refresh. This level of service is ideal for general maintenance to keep sneakers looking clean and presentable.  
-                  To remove everyday dirt, dust, and light stains, ensuring that they look fresh and well-maintained. 
-                  The Standard Cleaning Service is perfect for sneakers that have been lightly worn and need a routine cleanup to keep them looking their best.
+                  The Standard Cleaning Service is perfect for sneakers that have been lightly worn and need a routine cleanup to keep them looking their best. These are for sneakers that are in need of a regular refresh. This level of service is ideal for general maintenance to keep sneakers looking clean and presentable.
                 </td>
                 <td>
-                  sneakers that require intensive restoration. For shoes with stubborn stains, deeply ingrained dirt, or strong odors.  Perfect for sneakers that 
-                  have been well-worn or have gone through heavy use and need a thorough rejuvenation.
+                  Deep cleaning services are for sneakers that require intensive restoration. For shoes with stubborn stains, deeply ingrained dirt, or strong odors. Perfect for sneakers that have been well-worn or have gone through heavy use and need a thorough rejuvenation.
                 </td>
                 <td>
                   Our Premium Cleaning Service is the pinnacle of sneaker care. This level of service includes a combination of deep cleaning and premium conditioning to ensure 
-                  that sneakers receive the utmost care and attention. Our team will meticulously clean the shoes with specialized techniques, paying close attention to detail 
-                  to ensure that every aspect of the sneakers is thoroughly cared for.
+                  that sneakers receive the utmost care and attention.
                 </td>
               </tr>
               
@@ -137,5 +136,30 @@
     
           </table>
         </div>
+
+        <div class="section d-md-none container-lg d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3">
+					<div class="row featurette align-items-center">
+
+						<div class="col-12 scroll-x-top-el">
+							<div class="fs-1 fw-bold text-center">Standard Cleaning Service</div> 
+              <p class="fw-bold fs-3 text-center">Price: ${{price_standard.service_price}}</p>
+							<p class="fs-3 text-center">The Standard Cleaning Service is perfect for sneakers that have been lightly worn and need a routine cleanup to keep them looking their best. These are for sneakers that are in need of a regular refresh. This level of service is ideal for general maintenance to keep sneakers looking clean and presentable.</p>
+						</div>
+
+						<div class="col-12 scroll-x-down-el">
+							<div class="fs-1 fw-bold text-center">Deep Cleaning Service</div>
+              <p class="fw-bold fs-3 text-center">Price: ${{price_deep.service_price}}</p>               
+							<p class="fs-3 text-center">Deep cleaning services are for sneakers that require intensive restoration. For shoes with stubborn stains, deeply ingrained dirt, or strong odors. Perfect for sneakers that have been well-worn or have gone through heavy use and need a thorough rejuvenation.</p> 
+						</div> 
+
+						<div class="col-12 scroll-x-top-el">
+							<div class="fs-1 fw-bold text-center">Premium Cleaning Service</div>
+              <p class="fw-bold fs-3 text-center">Price: ${{price_premium.service_price}}</p> 
+							<p class="fs-3 text-center">Our Premium Cleaning Service is the pinnacle of sneaker care. This level of service includes a combination of deep cleaning and premium conditioning to ensure 
+                that sneakers receive the utmost care and attention.
+              </p>
+						</div>                   
+					</div>
+				</div>
       </main>
 {% endblock %}

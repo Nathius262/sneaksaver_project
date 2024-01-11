@@ -96,7 +96,7 @@
     <div class="input-group mb-3">
         <select class="form-control" name="package" id="">
           {% for data in service %}
-            <option value="{{data.id}}">{{data.service_name}}</option>
+            <option value="{{data.id}}">{{data.service_name |title}}</option>
           {% endfor %}
         </select>
 
