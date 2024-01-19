@@ -8,6 +8,7 @@ urlpatterns = [
     path('account/', include('allauth.urls')),
     path('account/', include('user.urls')),
     path('', include('sneaksaver.urls')),
+    path('sneakers/', include('sneakers_image_recog.urls')),
 ]
 
 if settings.DEBUG:

@@ -15,6 +15,8 @@ ROOT_URLCONF = f'{config("PROJECT_NAME")}.urls'
 
 WSGI_APPLICATION = f'{config("PROJECT_NAME")}.wsgi.application'
 
+TF_ENABLE_ONEDNN_OPTS=0
+
 
 #ASGI_APPLICATION = f'{config("PROJECT_NAME")}.routing.application'
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'authentication',
     'user',
     'sneaksaver',
+    'sneakers_image_recog',
 
     #django alllauth
     'allauth',
