@@ -3,6 +3,8 @@ from .views import (
     index_view, product_detail_view, product_view, 
     booking_view, pricing_view, about_page_view,
     contact_view,
+    faq_views,
+    message_agent_view,
 )
 
 urlpatterns = [
@@ -13,4 +15,6 @@ urlpatterns = [
     path("pricing/", pricing_view, name="pricing"),
     path("about/", about_page_view, name="about"),
     path("contact/", contact_view, name="contact"),
+    path("faqs/", faq_views, name="faq"),
+    path("message/", message_agent_view, name="message_agent"),
 ]

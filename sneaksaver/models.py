@@ -77,3 +77,11 @@ class Product(models.Model):
 
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.slug])
+
+
+class Message(models.Model):
+    user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name="user_message")
+    agent = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name="agent_message")
+    message = models.TextField()
+    status_read = models.BooleanField(default=False)
+    date = models.DateField(auto_now=True)

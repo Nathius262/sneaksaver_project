@@ -112,7 +112,6 @@
       .section-bottom{
         margin-bottom: 50px;
       }
-
     </style>
 
   </head>
@@ -120,9 +119,9 @@
     <!-- loader  -->
     <div class="loader_bg" id="loader">
       <div class="loader">
-        <img src="{% static 'images/loading.gif' %}" alt="loading" />
+        <video autoplay loop src="{% static 'images/animate.mp4' %}" alt="loading"></video>
       </div>
-   </div>
+    </div>
    <!-- end loader -->
    {% include 'snippets/main_header.html' %}
 		{% include 'snippets/message.html' %}

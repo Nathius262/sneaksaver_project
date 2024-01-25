@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'user',
     'sneaksaver',
     'sneakers_image_recog',
+    'data_analysis',
 
     #django alllauth
     'allauth',
@@ -80,6 +81,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'data_analysis.views.generic_view'
             ],
 
         },
@@ -298,19 +300,19 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Sneaksaver",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "favicon.png",
+    "site_logo": "images/logo.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "favicon.png",
+    "login_logo": "images/logo.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": "favicon.png",
+    "login_logo_dark": "images/logo.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
-    # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "favicon.png",
+    # Relative path to a images/logo for your site, will default to site_logo if absent (ideally 32x32 px)
+    "site_icon": "images/logo.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Welcome to Sneaksaver",
@@ -366,7 +368,7 @@ JAZZMIN_SETTINGS = {
     # UI Tweaks #
     #############
     # Relative paths to custom CSS/JS scripts (must be present in static files)
-    "custom_css": "style.css",
+    "custom_css": "css/style.css",
     "custom_js": None,
     # Whether to link font from fonts.googleapis.com (use custom_css to supply font otherwise)
     "use_google_fonts_cdn": True,

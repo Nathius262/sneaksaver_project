@@ -63,6 +63,7 @@
 				opacity: 0;
 				transition: visibility 0s 1s, opacity 1s linear;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -74,7 +75,7 @@
 
         <div class="loader_bg" id="loader">
             <div class="loader">
-              <img src="{% static 'images/loading.gif' %}" alt="loading" />
+              <video autoplay loop src="{% static 'images/animate.mp4' %}" alt="loading"></video>
             </div>
         </div>
 

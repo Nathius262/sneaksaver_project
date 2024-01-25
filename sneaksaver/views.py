@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ContactForm, BookingForm
-from .models import CleanService
+from .models import CleanService, Message
 from .utils import send_email_view
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from operator import attrgetter
 from .models import Product
+from django.http import JsonResponse
+
 
 # Create your views here.
+
+
 def index_view(request):
     context = {
         'product':Product.objects.all()[:6],
@@ -94,3 +98,22 @@ def contact_view(request):
             context['form'] = form
 
     return render(request, "sneaksaver/contact.html")
+
+
+def faq_views(request):
+    context = {
+        'faq':True,
+        'message_field':True
+    }
+    return render(request, "sneaksaver/faqs.html")
+
+
+def message_agent_view(request):
+    if request.method == "POST":
+        message = request.POST['message']
+        Message(user=request.user.user_profile, message=message)
+        message_list = Message.objects.all().filter(user=request.user.user_profile)
+    context = {
+        "message":list(message_list)
+    }
+    return JsonResponse(context, safe=False)

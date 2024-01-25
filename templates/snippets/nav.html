@@ -4,15 +4,22 @@
     <a id="header-logo" class="navbar-brand col-md-3 col-lg-2 me-0 px-2 fs-4" href="{% url 'index' %}">
 
         <span class="navbar-brand h4">SneakSaver</span>
-        <!--<img src="{% static 'img/logo.png' %}" alt="logo" width="150">-->
+        <img src="{% static 'images/logo.png' %}" alt="logo" width="50">
     </a>
+
+    <form class="d-flex mx-md-2 align-items-center me-5" method="get" action="{% url "search" %}">
+        <input name="q" class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
     
     <div class="nav-item d-none d-md-grid align-items-center mx-auto">
-        <button class="btn btn-dark me-5" id="mode-btn">
+        <button class="btn btn-dark me-2" id="mode-btn">
             <i class="fa-solid fa-sun"></i>
         </button>
         
     </div>
+
+    
 
     <button type="button" class="navbar-toggler nav_toggle_btn mx-auto px-2 d-flex collapsed mt-3 mb-1 ms-5" data-bs-toggle="modal" data-bs-target="#nav-menu">
         <span class="navbar-toggler-icon"></span>

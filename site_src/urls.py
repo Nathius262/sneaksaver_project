@@ -9,6 +9,7 @@ urlpatterns = [
     path('account/', include('user.urls')),
     path('', include('sneaksaver.urls')),
     path('sneakers/', include('sneakers_image_recog.urls')),
+    path('', include('data_analysis.urls')),
 ]
 
 if settings.DEBUG:

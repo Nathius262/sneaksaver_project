@@ -17,6 +17,25 @@
     --gold:rgb(255 222 0);
 }
 
+picture img{
+    width: 100px !important;
+}
+
+.chat-box, .chat-box-message{
+    position: fixed;
+    top: 80vh;
+    left: 85vw;
+    z-index: 99999;
+}
+
+.chat-box button{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color:var(--blue);
+    border: 1px solid var(--black);
+}
+
 .nav_toggle_btn{
     margin-left: auto;
     position: absolute;

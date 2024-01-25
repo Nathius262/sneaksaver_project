@@ -4,128 +4,249 @@
 {% load static %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Book" %}{% endblock %}
+{% block head_title %}
+	{% trans "Book" %}
+{% endblock %}
 
 {% block content %}
+	<style>
+		.main_overlay,
+		.profile_img,
+		.main_img {
+			border-radius: 0;
+		}
+		.main_img {
+			object-fit: cover;
+			width: 100%;
+			height: 300px;
+			overflow-y: hidden;
 
-<div class="login-box">
-  <!--<div class="login-logo">
-      <h1>
-          <picture>
-              <source srcset="{% static 'img/logo.png'%}" media="(prefers-color-scheme: dark)">
-               <img src="{% static 'img/logo.png'%}" alt="Fantasy Team Game">
-          </picture>
-      </h1>
-  </div>-->
+		}
+		.profile_img {
+			width: 100%;
+			height: auto;
+		}
+		.login-box {
+			width: 100%;
+			margin-right: 20px;
+			margin-left: 20px;
+		}
+	</style>
+	<div
+		class="login-box">
+		<!--<div class="login-logo">
+								      <h1>
+								          <picture>
+								              <source srcset="{% static 'img/logo.png'%}" media="(prefers-color-scheme: dark)">
+								               <img src="{% static 'img/logo.png'%}" alt="Fantasy Team Game">
+								          </picture>
+								      </h1>
+								  </div>-->
 
-  <div class="">
-    
-    <div class="mb-3 text-center">
-      <div class="mt-4">
-        <h3 class="fw-bold fs-h2 ">Booking</h3>
-      </div>
-    </div>
-    <div class="">
-          
-  <p class="login-box-msg">Fill the form below to book a clean for your sneakers</p>
-  <form method="post" enctype="multipart/form-data"  novalidate="" class="needs-validation" id="form-signin"> {% csrf_token %}
-    {% if redirect_field_value %}
-    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-    {% endif %}
+		<div class="">
 
-    <p class="form-text error-text text-danger">
-      {{ form.non_field_errors.as_text }}
-    </p>        
-      
-    <div class="input-group mb-3">
-        <input type="text" name="name" class="form-control" placeholder="Full Name" required="" {% if request.user.is_authenticated %} value="{{request.user.user_profile.first_name}} {{request.user.user_profile.last_name}}"{% endif %}>
-        <div class="input-group-append">
-            <div class="input-group-text">
-                <span class="fas fa-user-tie"></span>
-            </div>
-        </div>
-        <div class="invalid-feedback d-block form-text error-text text-danger">
-          {{ form.name.errors.as_text }}
-        </div>
-        <div class="invalid-feedback">
-          Valid full name is required
-        </div>
+			<div class="mb-3 text-center">
+				<div class="mt-4">
+					<h3 class="fw-bold fs-h2 ">Booking</h3>
+				</div>
+			</div>
+			<div class="">
 
-    </div>
+				<p class="login-box-msg">Fill the form below to book a clean for your sneakers</p>
 
-    <div class="input-group mb-3">
-          <input type="email" name="email" class="form-control" placeholder="Email" required="" {% if request.user.is_authenticated %} value="{{request.user.email}}"{% endif %}>
-          <div class="input-group-append">
-              <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-              </div>
-          </div>
-          <div class="invalid-feedback d-block form-text error-text text-danger">
-            {{ form.email.errors.as_text }}
-          </div>
-          <div class="invalid-feedback">
-            Valid Email Address is required
-          </div>
+				<div class="row">
+					<form method="post" enctype="multipart/form-data" novalidate="" class="needs-validation col-md-6" id="form-signin">
+						{% csrf_token %}
+						{% if redirect_field_value %}
+							<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+						{% endif %}
 
-    </div>
+						<p class="form-text error-text text-danger">
+							{{ form.non_field_errors.as_text }}
+						</p>
 
-    <div class="input-group mb-3">
-      <textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="Clean Description..." required=""></textarea>
+						<div class="input-group mb-3">
+							<input type="text" name="name" class="form-control" placeholder="Full Name" required="" {% if request.user.is_authenticated %} value="{{ request.user.user_profile.first_name }} {{ request.user.user_profile.last_name }}" {% endif %}>
+								<div class="input-group-append">
+									<div class="input-group-text">
+										<span class="fas fa-user-tie"></span>
+									</div>
+								</div>
+								<div class="invalid-feedback d-block form-text error-text text-danger">
+									{{ form.name.errors.as_text }}
+								</div>
+								<div class="invalid-feedback">
+									Valid full name is required
+								</div>
 
-      <div class="invalid-feedback d-block form-text error-text text-danger">
-        {{ form.description.errors.as_text }}
-      </div>
-      <div class="invalid-feedback">
-        Clean Description
-      </div>
+							</div>
 
-  </div>
+							<div class="input-group mb-3">
+								<input type="email" name="email" class="form-control" placeholder="Email" required="" {% if request.user.is_authenticated %} value="{{ request.user.email }}" {% endif %}>
+									<div class="input-group-append">
+										<div class="input-group-text">
+											<span class="fas fa-user"></span>
+										</div>
+									</div>
+									<div class="invalid-feedback d-block form-text error-text text-danger">
+										{{ form.email.errors.as_text }}
+									</div>
+									<div class="invalid-feedback">
+										Valid Email Address is required
+									</div>
 
-    <div class="input-group mb-3">
-        <input type="date" name="date" class="form-control" placeholder="book a date" required="" >
+								</div>
 
-        <div class="invalid-feedback d-block form-text error-text text-danger">
-          {{ form.date.errors.as_text }}
-        </div>
-        <div class="invalid-feedback">
-          Enter date!
-        </div>
+								<div class="input-group mb-3">
+									<textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="Clean Description..." required=""></textarea>
 
-    </div>
+									<div class="invalid-feedback d-block form-text error-text text-danger">
+										{{ form.description.errors.as_text }}
+									</div>
+									<div class="invalid-feedback">
+										Clean Description
+									</div>
 
-    <div class="input-group mb-3">
-        <select class="form-control" name="package" id="">
-          {% for data in service %}
-            <option value="{{data.id}}">{{data.service_name |title}}</option>
-          {% endfor %}
-        </select>
+								</div>
 
-        <div class="invalid-feedback d-block form-text error-text text-danger">
-          {{ form.package.errors.as_text }}
-        </div>
-        <div class="invalid-feedback">
-          select a package
-        </div>
+								<div class="input-group mb-3">
+									<input type="date" name="date" class="form-control" placeholder="book a date" required="">
 
-    </div>
+										<div class="invalid-feedback d-block form-text error-text text-danger">
+											{{ form.date.errors.as_text }}
+										</div>
+										<div class="invalid-feedback">
+											Enter date!
+										</div>
 
-      
-      
-      <div class="row">
-          <div class="col-12">
-              <button type="submit" class="btn btn-primary btn-block">
-                  continue
-              </button>
-          </div>
-      </div>
-  </form>
+									</div>
 
-      </div>
-  </div>
-</div>
+									<div class="input-group mb-3">
+										<select class="form-control" name="package" id="">
+											{% for data in service %}
+												<option value="{{ data.id }}">{{ data.service_name |title }}</option>
+											{% endfor %}
+										</select>
 
-<script src="{% static 'js/form-validation.js' %}"></script>
-<script>
+										<div class="invalid-feedback d-block form-text error-text text-danger">
+											{{ form.package.errors.as_text }}
+										</div>
+										<div class="invalid-feedback">
+											select a package
+										</div>
 
-</script>
-{% endblock %}
+									</div>
+
+
+									<div class="row">
+										<div class="col-12">
+											<button type="submit" class="btn btn-primary btn-block">
+												continue
+											</button>
+										</div>
+									</div>
+
+								</form>
+								<form class="col-md-6 order-first" method="post" enctype="multipart/form-data" id="form-image">{% csrf_token %}
+									<div>
+										<h2>Load an Image here for cleaning</h2>
+									</div>
+									<div class="container col-12 mt-3 mb-2 d-flex justify-content-center">
+										<div class="main_img container" id="id_image_group">
+											<img src="" alt="Load Image" class="profile_img" id="id_image_display">
+												<div class="main_overlay main_overlay_blur">
+													<div class="text-center fw-2">
+														<i class="fa fa-edit"></i>
+														Load Image</div>
+												</div>
+
+												<input type="file" name="image" id="id_image_file" onchange="readURL(this)" accept="image/*" class="form-control" value="{{ form.initial.image }}" hidden=""></div>
+											</div>
+											<button type="click" id="image-btn" class="btn btn-primary mt-0 mb-4">Clean Image</button>
+											<br>
+											<div class="spinner-border d-none text-info mx-3" role="status">
+												<span class="visually-hidden">Loading...</span>
+											</div>
+
+											<div class="result row bg-light py-5">
+												
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<script>
+							document.getElementById('id_image_group').onclick = function (event) {
+								document.getElementById('id_image_file').click();
+							};
+
+							function readURL(input) {
+								let reader = new FileReader();
+								reader.onload = function (e) {
+									$('#id_image_display').attr('src', e.target.result)
+								};
+								reader.readAsDataURL(input.files[0]);
+							}
+
+							let spinner = document.querySelectorAll('.spinner-border')
+							let formImage = document.querySelector('#form-image')
+							let imageBtn = document.querySelector('#image-btn')
+							imageBtn.addEventListener('click', (event) => {
+								event.preventDefault()
+								for(let i of spinner){
+									i.classList.remove('d-none')
+									i.classList.add('d-flex')
+								}
+								let formdata = new FormData()
+								let image = document.querySelector('#id_image_file')
+								formdata.append('image', image.files[0])
+								let csrf = '{{ csrf_token }}'
+								let option = {
+									method: "post",
+									headers: {
+										"X-CSRFToken": csrf
+									},
+									body: formdata
+								}
+								fetch('{% url "img_classify" %}', option).then((response) => {
+									return response.json()
+								}).then((data) => {
+									let resultEl = document.querySelectorAll('.result')
+									for (let i of resultEl){
+										i.insertAdjacentHTML('afterBegin', `
+										<div><h2>Result</h2></div>
+										<hr>
+										<div class="">
+											<div class="d-flex justify-content-between align-item-center mt-3">
+												<span>Model Name</span>
+												<span>${data.model}</span>
+											</div>
+											<div class="d-flex justify-content-between align-item-center mt-3">
+												<span>Price</span>
+												<span>${data.price}</span>
+											</div>
+											<div class="d-flex justify-content-between align-item-center mt-3">
+												<span>Recommend</span>
+												<span>${data.recommended}</span>
+											</div>
+										</div>
+										`)
+									}
+								}).catch((err) => {
+									console.log(err)
+								})
+
+								for(let i of spinner){
+									i.classList.remove('d-flex')
+									i.classList.add('d-none')
+								}
+
+							})
+						</script>
+
+						<script src="{% static 'js/form-validation.js' %}"></script>
+						<script></script>
+					{% endblock %}

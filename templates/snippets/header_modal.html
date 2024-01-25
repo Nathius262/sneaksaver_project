@@ -1,76 +1,202 @@
 <div class="modal" id="nav-menu" tabindex="-1" aria-labelledby="nav-menu" aria-modal="true" role="dialog">
-    <div class="modal-dialog modal-fullscreen" style="height:100vh; width:70vw; color:var(--white);">
-        <div class="modal-content">
-            <div class="modal-header">
-                {% if request.user.is_authenticated %}
-                <div class="profile d-flex align-items-center">
-                    <div style="width: 40px;" class="d-lg-block me-3 border rounded-5">
-                        <img width="100%" class="rounded-5" src="{{request.user.user_profile.image_url}}" alt="{{reqest.user}} profile image">
-                    </div>
+	<div class="modal-dialog modal-fullscreen" style="height:100vh; width:70vw; color:var(--white);">
+		<div class="modal-content">
+			<div class="modal-header">
+				{% if request.user.is_authenticated %}
+					<div class="profile d-flex align-items-center">
+						<div style="width: 40px;" class="d-lg-block me-3 border rounded-5">
+							<img width="100%" class="rounded-5" src="{{ request.user.user_profile.image_url }}" alt="{{ reqest.user }} profile image"></div>
 
-                    <div>
-                        <p class="m-0 p-0 fw-bolder fs-4">{{request.user.first_name}} {{request.user.last_name}}</p>
-                        <p class="m-0 p-0">@{{request.user}}</p>
-                    </div>
-                </div>
-                {%endif%}
+							<div>
+								<p class="m-0 p-0 fw-bolder fs-4">{{ request.user.first_name }}
+									{{ request.user.last_name }}</p>
+								<p class="m-0 p-0">@{{ request.user }}</p>
+							</div>
+						</div>
+					{% endif %}
 
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div id="sidebarMenu" class="">
-                    <div class="nav_head ms-auto">
-                        <ul class="me-auto mb-2 mb-lg-0">
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3 underline" href="{% url 'index' %}">{% if request.user.is_authenticated %} <i class="fa fa-desktop me-2"></i> Dashboard{%else%} <i class="fa fa-home me-2"></i> Home{% endif %}</a>
-                            </li>
-                           
-                            <div class="nav-item mb-4 d-grid align-items-center mx-auto">
-                                <button class="btn btn-dark me-5 mode-btn" id="mode-btn" onclick="screenSwitcher(true)">
-                                    <i class="fa-solid fa-sun me-2"></i> Dark theme: on
-                                </button>
-                                
-                            </div>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div id="sidebarMenu" class="">
+						<div class="nav_head ms-auto">
+							<ul class="me-auto mb-2 mb-lg-0">
+								<li class="nav-item mb-4">
+									<a class="navbar-brand fs-4 ms-3 underline" href="{% url 'index' %}">
+										{% if request.user.is_authenticated %}
+											<i class="fa fa-desktop me-2"></i>
+											Dashboard
+										{% else %}
+											<i class="fa fa-home me-2"></i>
+											Home
+										{% endif %}
+									</a>
+								</li>
 
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3 underline" href="{% url 'pricing' %}"><i class="fa-regular fa-money-bill-1"></i> Pricing</a>
-                            </li>
+								<div class="nav-item mb-4 d-grid align-items-center mx-auto">
+									<button class="btn btn-dark me-5 mode-btn" id="mode-btn" onclick="screenSwitcher(true)">
+										<i class="fa-solid fa-sun me-2"></i>
+										Dark theme: on
+									</button>
 
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3 underline" href="{% url 'product' %}"><i class="fa-brands fa-product-hunt"></i> Product</a>
-                            </li>
+								</div>
 
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3 underline" href="{% url 'booking' %}"><i class="fa-solid fa-calendar-days"></i> Booking</a>
-                            </li>
-                            
-                            {% if request.user.is_authenticated %}
+								<li class="nav-item mb-4">
+									<a class="navbar-brand fs-4 ms-3 underline" href="{% url 'pricing' %}">
+										<i class="fa-regular fa-money-bill-1"></i>
+										Pricing</a>
+								</li>
 
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3 underline" href=""><i class="fa fa-solid fa-bell me-2"></i> Notification</a>
-                            </li>
+								<li class="nav-item mb-4">
+									<a class="navbar-brand fs-4 ms-3 underline" href="{% url 'product' %}">
+										<i class="fa-brands fa-product-hunt"></i>
+										Product</a>
+								</li>
 
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3" href="{% url 'user:account_settings' %}"> <i class="fa fa-regular fa-user me-2"></i> User Profile</a>
-                            </li>
-                           
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3" href="{% url 'account_logout' %}"> <i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a>
-                            </li>
-                            {% else %}
-                           
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3" href="{% url 'account_login' %}"> <i class="fa-solid fa-right-to-bracket me-2"></i> Login</a>
-                            </li>
-                            <li class="nav-item mb-4">
-                                <a class="navbar-brand fs-4 ms-3" href="{% url 'account_signup' %}"> <i class="fa-solid fa-user-plus me-2"></i> Sign up</a>
-                            </li>
-            
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+								<li class="nav-item mb-4">
+									<a class="navbar-brand fs-4 ms-3 underline" href="{% url 'booking' %}">
+										<i class="fa-solid fa-calendar-days"></i>
+										Booking</a>
+								</li>
+
+								{% if request.user.is_authenticated %}
+
+									<li class="nav-item mb-4">
+										<a class="navbar-brand fs-4 ms-3 underline" href="">
+											<i class="fa fa-solid fa-bell me-2"></i>
+											Notification</a>
+									</li>
+
+									<li class="nav-item mb-4">
+										<a class="navbar-brand fs-4 ms-3" href="{% url 'user:account_settings' %}">
+											<i class="fa fa-regular fa-user me-2"></i>
+											User Profile</a>
+									</li>
+
+									<li class="nav-item mb-4">
+										<a class="navbar-brand fs-4 ms-3" href="{% url 'account_logout' %}">
+											<i class="fa-solid fa-right-from-bracket me-2"></i>
+											Logout</a>
+									</li>
+								{% else %}
+
+									<li class="nav-item mb-4">
+										<a class="navbar-brand fs-4 ms-3" href="{% url 'account_login' %}">
+											<i class="fa-solid fa-right-to-bracket me-2"></i>
+											Login</a>
+									</li>
+									<li class="nav-item mb-4">
+										<a class="navbar-brand fs-4 ms-3" href="{% url 'account_signup' %}">
+											<i class="fa-solid fa-user-plus me-2"></i>
+											Sign up</a>
+									</li>
+
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+    <style>
+        .message-body{
+            height: 60vh;
+            overflow-y: auto;
+        }
+        .receiver, .sender{
+            width: 40%;
+            border-radius: 20px;
+            color: var(--white);
+        }
+        .receiver{
+            background-color: var(--blue);
+            text-align: start;
+            justify-self: flex-start;
+            padding: 10px;
+        }
+        .sender{
+            background-color: var(--navy-blue);
+            opacity: .9;
+            text-align: end;
+            justify-self: flex-end;
+            padding: 10px;
+        }
+    </style>
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModalCenteredScrollable" tabindex="-1" aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Chat with an Agent</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="message-body">
+						<ul style="list-style-type: none;" class="d-grid">
+							<li class="receiver">Welcome to sneakers <br> how may I help you</li>
+							<li class="sender">Hi!</li>
+						</ul>
+					</div>
+					{% if request.user.is_authenticated %}
+
+					<form method="post" enctype="multipart/form-data" novalidate="" class="needs-validation" id="form-signin">
+						{% csrf_token %}
+						<div class="input-group mb-3">
+							<input type="text" name="message" class="form-control" placeholder="message" required="">
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<button class="fas fa-share" type="submit"></button>
+								</div>
+							</div>
+							<div class="invalid-feedback d-block form-text error-text text-danger">
+								{{ form.login.errors.as_text }}
+							</div>
+							<div class="invalid-feedback">
+								Valid message Address is required
+							</div>
+
+						</div>
+					</form>
+						
+						<script>
+							let formEl = document.querySelector('#form-signin')
+							formEl.addEventListener('submit', (e)=>{
+								e.preventDefault()
+								let formdata = new FormData(formEl)
+								let csrf = '{{ csrf_token }}'
+								let option = {
+									method: "post",
+									headers: {
+										"X-CSRFToken": csrf
+									},
+									body: formdata
+								}
+								fetch('{% url "message_agent" %}', option)
+								.then((response)=>{
+									return response.json()
+								})
+								.then((data)=>{
+									console.log(data)
+								})
+								.catch((err)=>{
+									console.log(err)
+								})
+							})
+						</script>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						</div>
+						{% else %}
+						Pls click <a href="{% url 'account_login' %}">here</a> to login before chating with any of our agents
+						{% endif %}
+
+					
+					</div>
+				</div>
+			</div>
+
+			
