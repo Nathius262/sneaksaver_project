@@ -37,7 +37,7 @@
 								{{faq.title}}
 								</button>
 							</h2>
-							<div id="panelsStayOpen-collapse{{forloop.counter}}" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading{{forloop.counter}}">
+							<div id="panelsStayOpen-collapse{{forloop.counter}}" class="accordion-collapse collapse {% if forloop.counter == 1 %}show{% endif %}" aria-labelledby="panelsStayOpen-heading{{forloop.counter}}">
 								<div class="accordion-body">
 									{{faq.content}}
 								</div>
