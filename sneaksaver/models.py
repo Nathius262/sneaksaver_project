@@ -2,11 +2,13 @@ from django.db import models
 from user.models import Profile
 from .utils import upload_location
 from django.urls import reverse
+from hitcount.models import HitCount
+from django.contrib.contenttypes.fields import GenericRelation
 
 # Create your models here.
 class CleanService(models.Model):
     service_name = models.CharField(max_length=50, null=True, blank=False)
-    service_price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=False)
+    service_price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00, null=True, blank=False)
 
     def __str__(self):
         return self.service_name
@@ -56,13 +58,25 @@ class Contact(models.Model):
         return str(self.name)
 
 
+class ShoeModel(models.Model):
+    name = models.CharField(max_length=50, null=True, blank=False)
+    price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    
+    def __str__(self):
+        return self.name
+    
+
 class Product(models.Model):
     name=models.CharField(max_length=50, null=True, blank=True)
     description=models.TextField()
     price = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=False)
     image = models.ImageField(upload_to=upload_location, default="default_product.jpg", null=True, blank=True)
     slug = models.SlugField(blank=True, unique=True)
+    tag = models.ForeignKey(ShoeModel, on_delete=models.CASCADE, null=True)
     date = models.DateField(auto_now=True, auto_now_add=False)
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
+
 
     def __str__(self):
         return str(self.name)

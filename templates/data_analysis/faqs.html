@@ -1,0 +1,64 @@
+{% extends 'account/base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load account socialaccount %}
+
+{% block head_title %}
+	{% trans 'FrequentlyAskedQuestion' %}
+{% endblock %}
+{% block content %}
+	<style>
+		body::before {
+			content: '';
+			background: none;
+			background-size: cover;
+		}
+		.accordion-item h2{
+			font-size:20px;
+		}
+	</style>
+	<main style="overflow: hidden;">
+		<div class="row justify-content-center container">
+            <div class="col-md-6 d-md-none mb-4">
+                <div class="container">
+                    <img class="w-100" src="{% static 'images/1.jpg' %}" alt="">
+                </div>
+            </div>
+			<div class="col-md-8">
+                <div class="container">
+                    <h2 class="fw-bold mb-5 h1">Frequently Asked Questions</h2>
+                </div>
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					{% for faq in faq_content %}
+						<div class="accordion-item">
+							<h2 class="accordion-header" id="panelsStayOpen-heading{{forloop.counter}}">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{forloop.counter}}" aria-expanded="true" aria-controls="panelsStayOpen-collapse{{forloop.counter}}">
+								{{faq.title}}
+								</button>
+							</h2>
+							<div id="panelsStayOpen-collapse{{forloop.counter}}" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading{{forloop.counter}}">
+								<div class="accordion-body">
+									{{faq.content}}
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				  </div>
+			</div>
+
+		</div>
+		<div>
+			
+		<!-- Button trigger modal -->
+		<div class="container mt-4 d-flex justify-content-center align-items-center">
+			<span class="me-3">Can't find what you're looking for?</span>
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenteredScrollable">
+				click here
+			</button>
+		</div>
+		</div>
+	</main>
+  
+  
+{% endblock %}

@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from operator import attrgetter
 from sneaksaver.models import Product, CleanService
-from .models import CleanServiceSearch, ProductSearch
+from .models import CleanServiceSearch, ProductSearch, TopSearch, FrequentlyAskedQuestion
 
 # Create your views here.
 def generic_view(request):
@@ -21,6 +21,7 @@ def get_product_queryset(query=None):
         product = Product.objects.all().filter(
             Q(name__icontains=q) |
             Q(price__icontains=q) |
+            Q(tag__name__icontains=q) |
             Q(description__icontains=q)
         ).distinct()
         for products in product:
@@ -39,6 +40,18 @@ def get_clean_queryset(query=None):
             queryset.append(services)
     return list(set(queryset))
 
+def get_faq_queryset(query=None):
+    queryset = []
+    queries = query.split(" ")
+    for q in queries:
+        service = FrequentlyAskedQuestion.objects.all().filter(
+            Q(title__icontains=q) |
+            Q(content__icontains=q)
+        ).distinct()
+        for services in service:
+            queryset.append(services)
+    return list(set(queryset))
+
 def search_view(request):
     context = {}
 
@@ -46,7 +59,11 @@ def search_view(request):
     if request.GET:
         query = request.GET.get('q')
         context['query'] = str(query)
-
+        
+        top_search, created = TopSearch.objects.get_or_create(name=query)
+        top_search.search_count += 1
+        top_search.save()
+        
         product = sorted(get_product_queryset(query), key=attrgetter('date'), reverse=True)
 
         # Pagination
@@ -62,6 +79,7 @@ def search_view(request):
             product = post_paginator.page(post_paginator.num_pages)
 
         service = get_clean_queryset(query)
+        faq = get_faq_queryset(query)
         
         #search result couter
         if product:
@@ -78,6 +96,17 @@ def search_view(request):
         context = {
             'all_product': product,
             'service':service,
+            'faq_content':faq,
             'query': query,
+            'top_search': TopSearch.objects.all()[:6]
         }
     return render(request, 'data_analysis/search.html', context)
+
+
+def faq_views(request):
+    context = {
+        'faq':True,
+        'faq_content':FrequentlyAskedQuestion.objects.all(),
+        'message_field':True
+    }
+    return render(request, "data_analysis/faqs.html", context)

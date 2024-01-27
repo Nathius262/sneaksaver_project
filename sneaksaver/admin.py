@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Clean, CleanService, Review, Booking, Contact, Product
+from .models import Clean, CleanService, Review, Booking, Contact, Product, ShoeModel
 
 # Register your models here.
 class CleanAdmin(admin.ModelAdmin):
@@ -25,6 +25,9 @@ class ContactAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price']
     
+class ShoeModelAdmin(admin.ModelAdmin):
+    list_display = ['name', 'price']
+    
     
 admin.site.register(Clean, CleanAdmin)
 admin.site.register(CleanService, CleanServiceAdmin)
@@ -32,3 +35,4 @@ admin.site.register(Review, ReviewAdmin)
 admin.site.register(Booking, BookingAdmin)
 admin.site.register(Contact, ContactAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(ShoeModel, ShoeModelAdmin)

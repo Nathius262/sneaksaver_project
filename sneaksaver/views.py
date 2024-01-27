@@ -5,8 +5,10 @@ from .utils import send_email_view
 from django.contrib import messages
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from operator import attrgetter
-from .models import Product
+from .models import Product, ShoeModel
 from django.http import JsonResponse
+from hitcount.views import HitCountDetailView
+from django.db.models import Count
 
 
 # Create your views here.
@@ -15,6 +17,7 @@ from django.http import JsonResponse
 def index_view(request):
     context = {
         'product':Product.objects.all()[:6],
+        'popular_posts': Product.objects.order_by('-hit_count_generic__hits')[:6],
         "loc":True
     }
     return render(request, "index.html", context)
@@ -39,21 +42,40 @@ def product_view(request):
 
     return render(request, "sneaksaver/product_list.html", context)
 
-def product_detail_view(request, slug):
-    
-    product = get_object_or_404(Product, slug=slug)
-    
-    context = {
-        'product':product,
-        'related':Product.objects.all().order_by('?')[:2]
-    }
-    return render(request, "sneaksaver/product_detail.html", context)
+
+class DetailPostView(HitCountDetailView):
+    model = Product
+    template_name = 'sneaksaver/product_detail.html'
+    context_object_name = 'product'
+    slug_field = 'slug'
+    count_hit = True
+
+    def get_queryset(self):
+        products = Product.objects.all().filter(slug=self.kwargs['slug'])
+        return products
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailPostView, self).get_context_data(**kwargs)
+        product = self.get_queryset()
+        product = product.first()
+
+        tag = ShoeModel.objects.all()
+        related_post = Product.objects.filter(tag__in=tag).exclude(slug=self.kwargs['slug'])
+        related_post = related_post.annotate(tag_count=Count('tag')).order_by('-tag_count', '-date')
+
+        context.update({
+            'popular_posts': Product.objects.order_by('-hit_count_generic__hits')[:3],
+            'related_post':related_post[:1],
+            'tag': tag,
+        })
+        return context
+
 
 def pricing_view(request):
     context = {
-        "price_standard":CleanService.objects.get(service_name__icontains="standard"),
-        "price_deep":CleanService.objects.get(service_name__icontains="deep"),
-        "price_premium":CleanService.objects.get(service_name__icontains="premium"),
+        "price_standard":CleanService.objects.get_or_create(service_name__icontains="standard"),
+        "price_deep":CleanService.objects.get_or_create(service_name__icontains="deep"),
+        "price_premium":CleanService.objects.get_or_create(service_name__icontains="premium"),
     }
     return render(request, "sneaksaver/pricing.html", context)
 
@@ -98,15 +120,6 @@ def contact_view(request):
             context['form'] = form
 
     return render(request, "sneaksaver/contact.html")
-
-
-def faq_views(request):
-    context = {
-        'faq':True,
-        'message_field':True
-    }
-    return render(request, "sneaksaver/faqs.html")
-
 
 def message_agent_view(request):
     if request.method == "POST":
