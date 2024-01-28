@@ -301,19 +301,19 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Sneaksaver",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "images/logo.jpg",
+    "site_logo": "images/logo.png",
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": "images/logo.jpg",
+    "login_logo": "images/logo.png",
 
     # Logo to use for login form in dark themes (defaults to login_logo)
-    "login_logo_dark": "images/logo.jpg",
+    "login_logo_dark": "images/logo.png",
 
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
 
     # Relative path to a images/logo for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": "images/logo.jpg",
+    "site_icon": "images/logo.png",
 
     # Welcome text on the login screen
     "welcome_sign": "Welcome to Sneaksaver",
