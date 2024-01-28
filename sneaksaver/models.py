@@ -11,7 +11,7 @@ class CleanService(models.Model):
     service_price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00, null=True, blank=False)
 
     def __str__(self):
-        return self.service_name
+        return str(self.service_name)
 
 
 class Clean(models.Model):

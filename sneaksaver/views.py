@@ -72,10 +72,13 @@ class DetailPostView(HitCountDetailView):
 
 
 def pricing_view(request):
+    price_standard, _ = CleanService.objects.get_or_create(service_name__icontains="standard")
+    price_deep, _= CleanService.objects.get_or_create(service_name__icontains="deep")
+    price_premium, _ = CleanService.objects.get_or_create(service_name__icontains="premium")
     context = {
-        "price_standard":CleanService.objects.get_or_create(service_name__icontains="standard"),
-        "price_deep":CleanService.objects.get_or_create(service_name__icontains="deep"),
-        "price_premium":CleanService.objects.get_or_create(service_name__icontains="premium"),
+        "price_standard":price_standard,
+        "price_deep":price_deep,
+        "price_premium":price_premium,
     }
     return render(request, "sneaksaver/pricing.html", context)
 
