@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from operator import attrgetter
-from sneaksaver.models import Product, CleanService
+from sneaksaver.models import Product, CleanService, Message
 from .models import CleanServiceSearch, ProductSearch, TopSearch, FrequentlyAskedQuestion
 
 # Create your views here.
@@ -104,9 +104,11 @@ def search_view(request):
 
 
 def faq_views(request):
+    message = Message.objects.all().filter(user=request.user.user_profile)
     context = {
         'faq':True,
         'faq_content':FrequentlyAskedQuestion.objects.all(),
-        'message_field':True
+        'message_field':True,
+        'message':message
     }
     return render(request, "data_analysis/faqs.html", context)

@@ -97,5 +97,9 @@ class Message(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name="user_message")
     agent = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name="agent_message")
     message = models.TextField()
+    agent_reply = models.TextField(null=True)
     status_read = models.BooleanField(default=False)
     date = models.DateField(auto_now=True)
+    
+    def __str__(self):
+        return str(self.user)

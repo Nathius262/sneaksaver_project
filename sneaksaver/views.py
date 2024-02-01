@@ -9,6 +9,9 @@ from .models import Product, ShoeModel
 from django.http import JsonResponse
 from hitcount.views import HitCountDetailView
 from django.db.models import Count
+from openai import OpenAI
+from decouple import config
+
 
 
 # Create your views here.
@@ -124,12 +127,34 @@ def contact_view(request):
 
     return render(request, "sneaksaver/contact.html")
 
+client = OpenAI(api_key= config("GPT_API_KEY"))
+
+def get_gpt3_response(user_message):
+    
+    
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "system", "content": "You are a virtual assistant providing information about sneakers."},
+            {"role": "assistant", "content": "The latest sneaker clean service recommended"},
+            {"role": "user", "content": user_message},
+            
+        ],
+        temperature=0.5,
+        max_tokens=50,
+        #top_p=1.0
+    )
+
+    bot_response = response.choices[0].message.content
+    
+    return bot_response
+
+
 def message_agent_view(request):
     if request.method == "POST":
         message = request.POST['message']
-        Message(user=request.user.user_profile, message=message)
-        message_list = Message.objects.all().filter(user=request.user.user_profile)
-    context = {
-        "message":list(message_list)
-    }
-    return JsonResponse(context, safe=False)
+        bot_response = get_gpt3_response(message)
+        Message.objects.create(user=request.user.user_profile, message=message, agent_reply=bot_response, status_read=True)
+        return JsonResponse({'bot_response': bot_response})
+    else:
+        return JsonResponse({"error":"something went wrong!"}, safe=False)

@@ -1,3 +1,4 @@
+{% load static %}
 <div class="modal" id="nav-menu" tabindex="-1" aria-labelledby="nav-menu" aria-modal="true" role="dialog">
 	<div class="modal-dialog modal-fullscreen" style="height:100vh; width:70vw; color:var(--white);">
 		<div class="modal-content">
@@ -107,9 +108,10 @@
             overflow-y: auto;
         }
         .receiver, .sender{
-            width: 40%;
+            width: 80%;
             border-radius: 20px;
             color: var(--white);
+			margin-top: 5px;
         }
         .receiver{
             background-color: var(--blue);
@@ -135,9 +137,18 @@
 				</div>
 				<div class="modal-body">
 					<div class="message-body">
-						<ul style="list-style-type: none;" class="d-grid">
+						<ul style="list-style-type: none;" class="d-grid" id="message-ul">
 							<li class="receiver">Welcome to sneakers <br> how may I help you</li>
-							<li class="sender">Hi!</li>
+							{% for reply in message %}
+							{% if reply.message %}
+							<li class="sender">{{reply.message}}</li>
+							{% endif %}
+
+							{% if reply.agent_reply %}
+							<li class="receiver">{{reply.agent_reply}}</li>
+							{% endif %}
+							
+							{% endfor %}
 						</ul>
 					</div>
 					{% if request.user.is_authenticated %}
@@ -145,45 +156,58 @@
 					<form method="post" enctype="multipart/form-data" novalidate="" class="needs-validation" id="form-signin">
 						{% csrf_token %}
 						<div class="input-group mb-3">
-							<input type="text" name="message" class="form-control" placeholder="message" required="">
+							<div class="invalid-feedback d-block form-text error-text text-danger">
+								{{ form.login.errors.as_text }}
+							</div>
+							<div class="invalid-feedback">
+								message cannot be empty!
+							</div>
+							<input id="input-message" type="text" name="message" class="form-control" placeholder="message" required="">
 							<div class="input-group-append">
 								<div class="input-group-text">
 									<button class="fas fa-share" type="submit"></button>
 								</div>
 							</div>
-							<div class="invalid-feedback d-block form-text error-text text-danger">
-								{{ form.login.errors.as_text }}
-							</div>
-							<div class="invalid-feedback">
-								Valid message Address is required
-							</div>
+							
 
 						</div>
 					</form>
 						
 						<script>
 							let formEl = document.querySelector('#form-signin')
+							let messageBody = document.querySelector('#message-ul')
 							formEl.addEventListener('submit', (e)=>{
 								e.preventDefault()
-								let formdata = new FormData(formEl)
-								let csrf = '{{ csrf_token }}'
-								let option = {
-									method: "post",
-									headers: {
-										"X-CSRFToken": csrf
-									},
-									body: formdata
+								if( formEl.checkValidity()){
+									let formdata = new FormData(formEl)
+									let csrf = '{{ csrf_token }}'
+									let option = {
+										method: "post",
+										headers: {
+											"X-CSRFToken": csrf
+										},
+										body: formdata
+									}
+									
+									messageBody.insertAdjacentHTML('beforeend', `
+										<li class="sender">${formdata.get('message')}</li>
+									`)
+									document.querySelector('#input-message').value = ""
+									fetch('{% url "message_agent" %}', option)
+									.then((response)=>{
+										return response.json()
+									})
+									.then((data)=>{
+										console.log(data)
+										messageBody.insertAdjacentHTML('beforeend', `
+											<li class="receiver">${data.bot_response}</li>
+										`)
+									})
+									.catch((err)=>{
+										console.log(err)
+									})
 								}
-								fetch('{% url "message_agent" %}', option)
-								.then((response)=>{
-									return response.json()
-								})
-								.then((data)=>{
-									console.log(data)
-								})
-								.catch((err)=>{
-									console.log(err)
-								})
+								
 							})
 						</script>
 						</div>
@@ -196,6 +220,7 @@
 
 					
 					</div>
+					<script src="{% static 'js/form-validation.js' %}"></script>
 				</div>
 			</div>
 
