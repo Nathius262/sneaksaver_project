@@ -12,3 +12,7 @@ Pillow==10.1.0
 PyJWT==2.8.0
 python-decouple==3.8
 python3-openid==3.2.0
+openai==1.10.0
+opencv-python==4.9.0.80
+scikit-image==0.22.0
+scikit-learn==1.4.0
